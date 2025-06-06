@@ -1,25 +1,30 @@
 from FSM import FSM
-from State import State
-from Transition import Transition
+from AbcState import State
+from AbcTransition import Transition
+from State import State_1, State_2, State_3
+from Transition import Transition_1, Transition_2, Transition_3, Transition_4
 
 fsm = FSM()
 
 states = [
-    s0:=State(0, 'Initial State'),
-    s1:=State(1, 'State 1'),
-    s2:=State(2, 'State 2')
+    s0:=State_1(0, 'Initial State'),
+    s1:=State_2(1, 'State 1'),
+    s2:=State_3(2, 'State 2')
 ]
 
 transitions = [
-    Transition(s0, s1, 1),
-    Transition(s0, s2, 2),
-    Transition(s1, s2, 1),
-    Transition(s1, s0, 2),
+    Transition_1(s0, s1),
+    Transition_2(s0, s2),
+    Transition_3(s1, s2),
+    Transition_4(s1, s0),
 ]
 
-inputs = [
-    1, 2, 1, 2, 1, 1
-]
+context = {
+    "input": [
+        1, 2, 1, 2, 1, 1
+    ]
+}
+
 
 for each in states:
     fsm.add_state(each)
@@ -30,5 +35,5 @@ for each in transitions:
 
 fsm.set_initial_state(s0)
 fsm.set_final_state(s1)
-result = fsm(inputs)
+result = fsm(context)
 print(result)

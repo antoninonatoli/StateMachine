@@ -25,40 +25,38 @@ class FSM:
         if state not in self.final_states:
             self.final_states.add(state)
     
-    def next(self):
+    def next(self, context):
         if self.current_state in self.final_states:
             return
         
-        next_state = self.get_transition(self.current_input).target_state
+        next_state = self.get_transition(context).target_state
         self.current_state = next_state
 
-    def get_transition(self, input_value):
-        # I know the input_value and current state...
+    def get_transition(self, context):
         #Supposing the FSM is deterministic...
         
         transitions_iter = iter(self.transitions)
         while not (
           (transition:=next(transitions_iter)).source_state == self.current_state 
-          and transition.input_value==input_value
+          and transition.condition(context)
         ):
             continue
         return transition
 
 
-    def __call__(self, input_values):
+    def __call__(self, context):
         self.current_state = self.initial_state
-        for arg in input_values:
-            self.current_input = arg
-            #self.curent_state()
-            self.next()
-        if self.current_state in self.final_states:
-            return True
-        return False
-    
-        #while not self.current_state in self.final_states:
-        #    print(f"Running state: {self.state.__class__.__name__}")
-        #    self.current_input = arg
-        #    # self.state()
-        #    self.next()
-        #print(f"Running final state: {self.state.__class__.__name__}")
-        ##self.state()
+        try:
+            while not self.current_state in self.final_states:
+                print(f"Running state: {self.current_state.__class__.__name__}")
+                self.current_state()    
+                self.next(context)
+            
+            print(f"Running final state: {self.current_state.__class__.__name__}")
+            self.current_state()
+            self.current_state.output()
+        except StopIteration as e:
+            print(f"Transition not found ! {str(e)}")
+            return False
+        
+

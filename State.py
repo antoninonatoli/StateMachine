@@ -1,28 +1,15 @@
-from abc import ABC, abstractmethod
-
-class State:
-    
-    def __init__(self, id:int, output):
-        self.id = id
-        self.name = f"s{id}"
-        self.output = output
-    
-    @abstractmethod
-    def __call__(self, *args, **kwargs):
-        raise NotImplementedError("Subclasses implement __call__ method")
-    
-    def __eq__(self, other):
-        if isinstance(other, State):
-            return self.id == other.id
-        return False
-    
-    def __hash__(self):
-        return hash(self.id)
-    
-    def __str__(self):
-        return self.name
-    
-    
+from AbcState import State
 
 
+class State_1(State):
+    def __call__(self, *args, **kwds):
+        return "Output of state 1"
+
+class State_2(State):
+    def __call__(self, *args, **kwds):
+        return "Output of state 2"
+
+class State_3(State):
+    def __call__(self, *args, **kwds):
+        return "Output of state 3"
         
