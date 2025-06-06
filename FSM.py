@@ -5,6 +5,7 @@ class FSM:
         self.initial_state = None
         self.final_states = set()
         self.transitions = set()
+        self.iteration_number = 0
     
     def add_state(self, state):
         if state not in self.states:
@@ -31,6 +32,7 @@ class FSM:
         
         next_state = self.get_transition(context).target_state
         self.current_state = next_state
+        self.iteration_number += 1
 
     def get_transition(self, context):
         #Supposing the FSM is deterministic...
@@ -45,16 +47,18 @@ class FSM:
 
 
     def __call__(self, context):
+        context.setdefault("iteration_number", self.iteration_number)
         self.current_state = self.initial_state
         try:
             while not self.current_state in self.final_states:
                 print(f"Running state: {self.current_state.__class__.__name__}")
                 self.current_state()    
                 self.next(context)
+                context["iteration_number"] = self.iteration_number
             
             print(f"Running final state: {self.current_state.__class__.__name__}")
             self.current_state()
-            self.current_state.output()
+            #self.current_state.output
         except StopIteration as e:
             print(f"Transition not found ! {str(e)}")
             return False

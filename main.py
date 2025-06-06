@@ -34,6 +34,6 @@ for each in transitions:
 
 
 fsm.set_initial_state(s0)
-fsm.set_final_state(s1)
+fsm.set_final_state(s2)
 result = fsm(context)
 print(result)
