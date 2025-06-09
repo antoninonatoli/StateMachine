@@ -29,15 +29,6 @@ fsm = (
     ).build()
 )
 
-
-
-result = fsm(
-    context={
-        "input": [
-            1, 2, 1, 2, 1, 1
-        ]
-    }
-)
-
-
-print(result)
+while not (res:=fsm.single_run_next(context={"input":[1], "iteration_number":0})):
+    print(res)
+print(res)

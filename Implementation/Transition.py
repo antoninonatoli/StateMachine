@@ -1,4 +1,4 @@
-from AbcTransition import Transition
+from Abstract.AbcTransition import Transition
 
 class Transition_1(Transition):
     def condition(self, context):

@@ -1,8 +1,6 @@
-from FSM import FSM
-from AbcState import State
-from AbcTransition import Transition
-from State import State_1, State_2, State_3
-from Transition import Transition_1, Transition_2, Transition_3, Transition_4
+from Abstract.FSM import FSM
+from Implementation.State import State_1, State_2, State_3
+from Implementation.Transition import Transition_1, Transition_2, Transition_3, Transition_4
 
 fsm = FSM()
 

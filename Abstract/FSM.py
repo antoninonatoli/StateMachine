@@ -1,6 +1,6 @@
 from typing import List
-from AbcState import State
-from AbcTransition import Transition
+from .AbcState import State
+from .AbcTransition import Transition
 
 class FSM:
     def __init__(self):
@@ -32,11 +32,12 @@ class FSM:
     
     def next(self, context):
         if self.current_state in self.final_states:
-            return
+            return True
         
         next_state = self.get_transition(context).target_state
         self.current_state = next_state
         self.iteration_number += 1
+        return False
 
     def get_transition(self, context):
         #Supposing the FSM is deterministic...
@@ -49,6 +50,11 @@ class FSM:
             continue
         return transition
 
+    def single_run_next(self, context):
+        self.current_state()
+        is_final = self.next(context)
+        return is_final
+        
 
     def __call__(self, context):
         context.setdefault("iteration_number", self.iteration_number)
@@ -94,5 +100,6 @@ class FSMBuilder:
         return self
     
     def build(self):
+        self.fsm.current_state = self.fsm.initial_state
         return self.fsm
     
