@@ -1,3 +1,7 @@
+from typing import List
+from AbcState import State
+from AbcTransition import Transition
+
 class FSM:
     def __init__(self):
         self.current_state = None
@@ -64,3 +68,31 @@ class FSM:
             return False
         
 
+
+class FSMBuilder:
+
+    def __init__(self):
+        self.fsm = FSM()
+    
+    def set_states(self, states: List[State]):
+        for each in states: 
+            self.fsm.add_state(each)
+        return self
+    
+    def set_transitions(self, transitions: List[Transition]):
+        for each in transitions:
+            self.fsm.add_transition(each)
+        return self
+    
+    def set_initial_state(self, state:State):
+        self.fsm.set_initial_state(state)
+        return self
+    
+    def set_final_states(self, states: List[State]):
+        for each in states:
+            self.fsm.set_final_state(each)
+        return self
+    
+    def build(self):
+        return self.fsm
+    
