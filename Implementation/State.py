@@ -1,6 +1,10 @@
 from Abstract.AbcState import State
 
 
+class State_0(State):
+    def __call__(self, *args, **kwds):
+        print("Output of state 0") 
+
 class State_1(State):
     def __call__(self, *args, **kwds):
         print("Output of state 1")
