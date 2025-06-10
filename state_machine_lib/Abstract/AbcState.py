@@ -11,6 +11,10 @@ class State:
     def __call__(self, *args, **kwargs):
         raise NotImplementedError("Subclasses implement __call__ method")
     
+    @abstractmethod
+    def output(self, **kwargs):
+        raise NotImplementedError("Subclasses implement output method")
+
     def __eq__(self, other):
         if isinstance(other, State):
             return self.id == other.id
