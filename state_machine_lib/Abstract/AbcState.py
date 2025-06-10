@@ -3,10 +3,9 @@ from typing import Callable
 
 class State:
     
-    def __init__(self, id:int, output: Callable):
+    def __init__(self, id:int):
         self.id = id
         self.name = f"s{id}"
-        self.output = output
     
     @abstractmethod
     def __call__(self, *args, **kwargs):

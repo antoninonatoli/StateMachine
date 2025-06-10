@@ -6,9 +6,9 @@ fsm = (
     FSMBuilder()
     .set_states(
         states=[
-            s0:=State_0(0, 'State 0'),
-            s1:=State_1(1, 'State 1'),
-            s2:=State_2(2, 'State 2')
+            s0:=State_0(0),
+            s1:=State_1(1),
+            s2:=State_2(2)
         ]
     )
     .set_transitions(
