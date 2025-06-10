@@ -7,7 +7,7 @@ Ogni stato concreto dovra' implementare i metodi astratti di AbcState cosi' come
 
 I file State.py e Transition.py sono esempi di implementazioni per le classi AbcState e AbcTransition.
 
-Nel file main_2py viene utilizzato un builder design pattern per creare l'oggetto fsm.
+Nel file main_2.py viene utilizzato un builder design pattern per creare l'oggetto fsm.
 fsm implementa il metodo magic __call__ e riceve come parametro un dizionario chiamato context.
 
 In questo esempio viene fornita l'implementazione in cui il contesto contiene una sequenza di numeri interi e si vede se la macchina accetta tale sequenza, raggiungendo pertanto uno stato finale.

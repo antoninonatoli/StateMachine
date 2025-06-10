@@ -1,4 +1,4 @@
-from Abstract.AbcTransition import Transition
+from state_machine_lib.Abstract.AbcTransition import Transition
 
 
 class Transition_0(Transition):

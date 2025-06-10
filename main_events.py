@@ -1,6 +1,6 @@
-from Abstract.FSM import FSMBuilder
-from Implementation.State import State_1, State_2, State_3, State_0
-from Implementation.Transition import Transition_0, Transition_1, Transition_2, Transition_3, Transition_4
+from state_machine_lib.Abstract.FSM import FSMBuilder
+from state_machine_lib.Implementation.State import State_1, State_2, State_3, State_0
+from state_machine_lib.Implementation.Transition import Transition_0, Transition_1, Transition_2, Transition_3, Transition_4
 
 fsm = ( 
     FSMBuilder()

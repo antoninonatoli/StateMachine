@@ -1,3 +1,18 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "state-machine-lib"
+version = "0.1.0"
+description = "A simple state machine library"
+authors = [
+    { name="Antonino Natoli", email="ninonat1@hotmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/antoninonatoli/StateMachine"
