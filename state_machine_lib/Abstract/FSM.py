@@ -4,9 +4,9 @@ from .AbcTransition import Transition
 
 class FSM:
     def __init__(self):
-        self.current_state = None
+        self.current_state = State(0)
         self.states = set()
-        self.initial_state = None
+        self.initial_state = State(0)
         self.final_states = set()
         self.transitions = set()
         self.iteration_number = 0
@@ -23,6 +23,7 @@ class FSM:
         if state not in self.states:
             raise Exception(f"State {state} not in FSM states")
         self.initial_state = state
+        self.current_state = state
     
     def set_final_state(self, state):
         if state not in self.states:
