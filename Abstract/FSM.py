@@ -99,6 +99,10 @@ class FSMBuilder:
             self.fsm.set_final_state(each)
         return self
     
+    def set_additional_attributes(self, **kwargs):
+        self.fsm.__dict__.update(kwargs)
+        return self
+    
     def build(self):
         self.fsm.current_state = self.fsm.initial_state
         return self.fsm

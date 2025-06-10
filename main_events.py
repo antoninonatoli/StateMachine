@@ -27,7 +27,12 @@ fsm = (
         states=[
             s2
         ]
-    ).build()
+    )
+    .set_additional_attributes(
+        additional_attribute_example='hello',
+        another_param=-1
+    )
+    .build()
 )
 
 res=fsm.single_run_next(context={"input":[0], "iteration_number":0})
