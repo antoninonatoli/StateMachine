@@ -52,7 +52,7 @@ class FSM:
         return transition
 
     def single_run_next(self, context):
-        self.current_state()
+        self.current_state(context=context)
         is_final = self.next(context)
         return is_final
         
@@ -63,12 +63,12 @@ class FSM:
         try:
             while not self.current_state in self.final_states:
                 print(f"Running state: {self.current_state.__class__.__name__}")
-                self.current_state()    
+                self.current_state(context=context)    
                 self.next(context)
                 context["iteration_number"] = self.iteration_number
             
             print(f"Running final state: {self.current_state.__class__.__name__}")
-            self.current_state()
+            self.current_state(context=context)
             #self.current_state.output
         except StopIteration as e:
             print(f"Transition not found ! {str(e)}")

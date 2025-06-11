@@ -1,14 +1,14 @@
-from Abstract.FSM import FSMBuilder
-from Implementation.State import State_1, State_2, State_3
-from Implementation.Transition import Transition_1, Transition_2, Transition_3, Transition_4
+from state_machine_lib.Abstract.FSM import FSMBuilder
+from state_machine_lib.Implementation.State import State_1, State_2, State_3
+from state_machine_lib.Implementation.Transition import Transition_1, Transition_2, Transition_3, Transition_4
 
 fsm = ( 
     FSMBuilder()
     .set_states(
         states=[
-            s0:=State_1(0, 'Initial State'),
-            s1:=State_2(1, 'State 1'),
-            s2:=State_3(2, 'State 2')
+            s0:=State_1(0),
+            s1:=State_2(1),
+            s2:=State_3(2)
         ]
     )
     .set_transitions(
